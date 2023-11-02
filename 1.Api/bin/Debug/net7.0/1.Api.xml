@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>1.Api</name>
+    </assembly>
+    <members>
+        <member name="M:_1.Api.Controllers.ProveedoresController.Get">
+            <summary>
+            Get all proveedores without any filters.
+            </summary>
+        </member>
+    </members>
+</doc>
