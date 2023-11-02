@@ -20,7 +20,7 @@ public class NimbusDB: DbContext
         if (!optionsBuilder.IsConfigured)
         {
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
-            optionsBuilder.UseMySql("Server=127.0.0.1,3306;Uid=root;Pwd=UHcn6_DT123++;Database=NimbusBackendDB;", serverVersion);
+            optionsBuilder.UseMySql("Server=sql10.freemysqlhosting.net,3306;Uid=sql10658839;Pwd=GkG3nAYau1;Database=sql10658839;", serverVersion);
         }
     }
     
