@@ -1,0 +1,9 @@
+# Excluir archivos y directorios generados por Rider
+.idea/
+bin/
+obj/
+
+# Excluir archivos de configuración específicos de Rider
+*.sln.iml
+*.suo
+*.sln.DotSettings.user
