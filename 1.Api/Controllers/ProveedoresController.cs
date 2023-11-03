@@ -14,67 +14,82 @@ namespace _1.Api.Controllers
     [ApiController]
     public class ProveedoresController : ControllerBase
     {
-
         private IProveedorData _proveedorData;
         private IProveedorDomain _proveedorDomain;
         
-        public ProveedoresController(IProveedorData proveedorData,IProveedorDomain proveedorDomain)
+        public ProveedoresController(IProveedorData proveedorData, IProveedorDomain proveedorDomain)
         {
             _proveedorData = proveedorData;
             _proveedorDomain = proveedorDomain;
         }
 
-        // GET: api/Tutorial
+        // GET: api/Proveedores
         /// <summary>
-        /// Get all proveedores without any filters.
+        /// Obtiene todos los proveedores sin ningún filtro.
         /// </summary>
         [HttpGet]
-        public List<Proveedores>Get()
+        public List<Proveedores> Get()
         {
+            // Recupera y devuelve una lista de todos los proveedores
             return _proveedorData.GetAll();
         }
 
-        // GET: api/Tutorial/5
+        // GET: api/Proveedores/5
         [HttpGet("{id}", Name = "Get")]
         public Proveedores Get(int id)
         {
+            // Obtiene un proveedor por su ID y lo devuelve
             return _proveedorData.GetById(id);
         }
-        // POST: api/Tutorial
+
+        // POST: api/Proveedores
         [HttpPost]
         public bool Post([FromBody] ProveedoresRequest request)
         {
-           // ProveedorDomain proveedorDomain = new ProveedorDomain();
-           Proveedores proveedores = new Proveedores()
-           {
-               Name = request.Name,
-               Year = request.Year,
-               Cost = request.Cost
-               
-           };
-            return _proveedorDomain.Create(proveedores);
-        }
-        
-        // PUT: api/Tutorial/5
-        [HttpPut("{id}")]
-        public bool Put(int id, [FromBody] ProveedoresRequest request)
-        {
+            if (request == null)
+            {
+                return false;
+            }
+
+            // Crea un objeto Proveedores a partir de la solicitud
             Proveedores proveedores = new Proveedores()
             {
                 Name = request.Name,
                 Year = request.Year,
                 Cost = request.Cost
-               
             };
-            return _proveedorDomain.Update(proveedores,id);
+
+            // Llama al dominio para crear un nuevo proveedor
+            return _proveedorDomain.Create(proveedores);
         }
 
-        // DELETE: api/Tutorial/5
+        // PUT: api/Proveedores/5
+        [HttpPut("{id}")]
+        public bool Put(int id, [FromBody] ProveedoresRequest request)
+        {
+            if (request == null)
+            {
+                return false;
+            }
+
+            // Crea un objeto Proveedores a partir de la solicitud
+            Proveedores proveedores = new Proveedores()
+            {
+                Name = request.Name,
+                Year = request.Year,
+                Cost = request.Cost
+            };
+
+            // Llama al dominio para actualizar el proveedor por su ID
+            return _proveedorDomain.Update(proveedores, id);
+        }
+
+        // DELETE: api/Proveedores/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            
+            // Implementa la lógica para eliminar un proveedor por su ID
+            // Puede eliminarlo de la fuente de datos o marcarlo como eliminado según su lógica de negocio
         }
-
     }
 }
